@@ -269,7 +269,7 @@ class _BannerAdState extends State<BannerAd>
         final params = <String, dynamic>{};
         params.addAll({
           'controllerId': controller.id,
-          'unitId': widget.unitId ?? MobileAds.bannerAdUnitId,
+          'unitId': widget.unitId ?? MobileAds2.bannerAdUnitId,
           'size_height': height,
           'size_width': width,
           'nonPersonalizedAds': widget.nonPersonalizedAds,

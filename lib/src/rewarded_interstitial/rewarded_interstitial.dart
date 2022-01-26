@@ -17,7 +17,7 @@ class RewardedInterstitialAd extends LoadShowAd<RewardedAdEvent> {
   ///   - iOS: ca-app-pub-3940256099942544/6978759866
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
-  static String get testUnitId => MobileAds.rewardedInterstitialAdTestUnitId;
+  static String get testUnitId => MobileAds2.rewardedInterstitialAdTestUnitId;
 
   /// Listen to the events thís ad throws
   ///
@@ -80,7 +80,7 @@ class RewardedInterstitialAd extends LoadShowAd<RewardedAdEvent> {
   /// Initialize the ad. This can be called only by the ad
   void init() async {
     channel.setMethodCallHandler(_handleMessages);
-    await MobileAds.pluginChannel.invokeMethod('initRewardedInterstitialAd', {
+    await MobileAds2.pluginChannel.invokeMethod('initRewardedInterstitialAd', {
       'id': id,
     });
   }
@@ -98,7 +98,7 @@ class RewardedInterstitialAd extends LoadShowAd<RewardedAdEvent> {
   /// ```
   void dispose() {
     super.dispose();
-    MobileAds.pluginChannel.invokeMethod('disposeRewardedInterstitialAd', {
+    MobileAds2.pluginChannel.invokeMethod('disposeRewardedInterstitialAd', {
       'id': id,
     });
   }
@@ -178,8 +178,8 @@ class RewardedInterstitialAd extends LoadShowAd<RewardedAdEvent> {
     isLoaded = (await channel.invokeMethod<bool>('loadAd', {
       'unitId': unitId ??
           this.unitId ??
-          MobileAds.rewardedAdUnitId ??
-          MobileAds.rewardedAdTestUnitId,
+          MobileAds2.rewardedAdUnitId ??
+          MobileAds2.rewardedAdTestUnitId,
       'nonPersonalizedAds': nonPersonalizedAds ?? this.nonPersonalizedAds,
       'keywords': keywords,
       'ssv': serverSideVerificationOptions?.toJson()

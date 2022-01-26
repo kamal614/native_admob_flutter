@@ -18,14 +18,14 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   ///   - iOS: ca-app-pub-3940256099942544/4411468910
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
-  static String get testUnitId => MobileAds.interstitialAdTestUnitId;
+  static String get testUnitId => MobileAds2.interstitialAdTestUnitId;
 
   /// The video test id for this ad.
   ///   - Android: ca-app-pub-3940256099942544/8691691433
   ///   - iOS: ca-app-pub-3940256099942544/5135589807
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
-  static String get videoTestUnitId => MobileAds.interstitialAdVideoTestUnitId;
+  static String get videoTestUnitId => MobileAds2.interstitialAdVideoTestUnitId;
 
   /// Listen to the events the ad throws
   ///
@@ -79,7 +79,7 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   /// Initialize the controller. This can be called only by the controller
   void init() {
     channel.setMethodCallHandler(_handleMessages);
-    MobileAds.pluginChannel.invokeMethod('initInterstitialAd', {'id': id});
+    MobileAds2.pluginChannel.invokeMethod('initInterstitialAd', {'id': id});
   }
 
   /// Dispose the ad to free up resources.
@@ -95,7 +95,7 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   /// ```
   void dispose() {
     super.dispose();
-    MobileAds.pluginChannel.invokeMethod('disposeInterstitialAd', {'id': id});
+    MobileAds2.pluginChannel.invokeMethod('disposeInterstitialAd', {'id': id});
   }
 
   /// Handle the messages the channel sends
@@ -162,8 +162,8 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
     isLoaded = (await channel.invokeMethod<bool>('loadAd', {
       'unitId': unitId ??
           this.unitId ??
-          MobileAds.interstitialAdUnitId ??
-          MobileAds.interstitialAdTestUnitId,
+          MobileAds2.interstitialAdUnitId ??
+          MobileAds2.interstitialAdTestUnitId,
       'nonPersonalizedAds': nonPersonalizedAds ?? this.nonPersonalizedAds,
       'keywords': keywords,
     }).timeout(

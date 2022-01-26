@@ -127,7 +127,7 @@ class _NativeAdsState extends State<NativeAds>
         SizedBox(height: 10),
         NativeAd(
           height: 320,
-          unitId: MobileAds.nativeAdVideoTestUnitId,
+          unitId: MobileAds2.nativeAdVideoTestUnitId,
           builder: (context, child) {
             return Material(
               elevation: 8,

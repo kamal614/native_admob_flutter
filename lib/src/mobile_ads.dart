@@ -16,9 +16,9 @@ const int RATING_MA = 3;
 ///   - using the right system version;
 ///   - using test devices and test ids;
 ///   - targeting the right groups of people.
-class MobileAds {
+class MobileAds2 {
   // MobileAds can not be initialized
-  const MobileAds._();
+  const MobileAds2._();
 
   // Unit ids
   static String? nativeAdUnitId;
@@ -121,31 +121,31 @@ class MobileAds {
     );
 
     // Ad Ids
-    MobileAds.nativeAdUnitId ??= nativeAdUnitId ?? nativeAdTestUnitId;
-    _debugCheckIsTestId(MobileAds.nativeAdUnitId, [
+    MobileAds2.nativeAdUnitId ??= nativeAdUnitId ?? nativeAdTestUnitId;
+    _debugCheckIsTestId(MobileAds2.nativeAdUnitId, [
       nativeAdTestUnitId,
       nativeAdVideoTestUnitId,
     ]);
 
-    MobileAds.bannerAdUnitId ??= bannerAdUnitId ?? bannerAdTestUnitId;
-    _debugCheckIsTestId(MobileAds.bannerAdUnitId, [bannerAdTestUnitId]);
+    MobileAds2.bannerAdUnitId ??= bannerAdUnitId ?? bannerAdTestUnitId;
+    _debugCheckIsTestId(MobileAds2.bannerAdUnitId, [bannerAdTestUnitId]);
 
-    MobileAds.interstitialAdUnitId ??=
+    MobileAds2.interstitialAdUnitId ??=
         interstitialAdUnitId ?? interstitialAdTestUnitId;
-    _debugCheckIsTestId(MobileAds.interstitialAdUnitId, [
+    _debugCheckIsTestId(MobileAds2.interstitialAdUnitId, [
       interstitialAdTestUnitId,
       interstitialAdVideoTestUnitId,
     ]);
 
-    MobileAds.rewardedAdUnitId ??= rewardedAdUnitId ?? rewardedAdTestUnitId;
-    _debugCheckIsTestId(MobileAds.rewardedAdUnitId, [rewardedAdTestUnitId]);
+    MobileAds2.rewardedAdUnitId ??= rewardedAdUnitId ?? rewardedAdTestUnitId;
+    _debugCheckIsTestId(MobileAds2.rewardedAdUnitId, [rewardedAdTestUnitId]);
 
-    MobileAds.appOpenAdUnitId ??= appOpenAdUnitId ?? appOpenAdTestUnitId;
-    _debugCheckIsTestId(MobileAds.appOpenAdUnitId, [appOpenAdTestUnitId]);
+    MobileAds2.appOpenAdUnitId ??= appOpenAdUnitId ?? appOpenAdTestUnitId;
+    _debugCheckIsTestId(MobileAds2.appOpenAdUnitId, [appOpenAdTestUnitId]);
 
-    MobileAds.rewardedInterstitialAdUnitId =
+    MobileAds2.rewardedInterstitialAdUnitId =
         rewardedInterstitialAdUnitId ?? rewardedInterstitialAdTestUnitId;
-    _debugCheckIsTestId(MobileAds.rewardedInterstitialAdUnitId, [
+    _debugCheckIsTestId(MobileAds2.rewardedInterstitialAdUnitId, [
       rewardedInterstitialAdTestUnitId,
     ]);
 
@@ -154,10 +154,10 @@ class MobileAds {
     assertVersionIsSupported(false);
     if (Platform.isAndroid) {
       // hybrid composition is enabled in android 19 and can't be disabled
-      MobileAds.useHybridComposition =
+      MobileAds2.useHybridComposition =
           osVersion == 19 ? true : useHybridComposition ?? false;
 
-      if (osVersion >= 29 && MobileAds.useHybridComposition) {
+      if (osVersion >= 29 && MobileAds2.useHybridComposition) {
         print(
           'It is NOT recommended to use hybrid composition on Android 10 or greater. '
           'It has some performance drawbacks',

@@ -23,7 +23,7 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
   /// The test id for this ad.
   ///   - Android: ca-app-pub-3940256099942544/3419835294
   ///   - iOS: ca-app-pub-3940256099942544/5662855259
-  static String get testUnitId => MobileAds.appOpenAdTestUnitId;
+  static String get testUnitId => MobileAds2.appOpenAdTestUnitId;
 
   /// Listen to the events the ad throws
   ///
@@ -85,7 +85,7 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
 
   void init() {
     channel.setMethodCallHandler(_handleMessages);
-    MobileAds.pluginChannel.invokeMethod('initAppOpenAd', {'id': id});
+    MobileAds2.pluginChannel.invokeMethod('initAppOpenAd', {'id': id});
   }
 
   Future<void> _handleMessages(MethodCall call) async {
@@ -178,8 +178,8 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
     final bool loaded = (await channel.invokeMethod<bool>('loadAd', {
       'unitId': unitId ??
           this.unitId ??
-          MobileAds.appOpenAdUnitId ??
-          MobileAds.appOpenAdTestUnitId,
+          MobileAds2.appOpenAdUnitId ??
+          MobileAds2.appOpenAdTestUnitId,
       'orientation': orientation,
       'nonPersonalizedAds': nonPersonalizedAds ?? this.nonPersonalizedAds,
       'keywords': keywords,
@@ -226,6 +226,6 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
   /// If you try to use a disposed ad, an `AssertionError will be thrown`
   void dispose() {
     super.dispose();
-    MobileAds.pluginChannel.invokeMethod('disposeAppOpenAd', {'id': id});
+    MobileAds2.pluginChannel.invokeMethod('disposeAppOpenAd', {'id': id});
   }
 }
