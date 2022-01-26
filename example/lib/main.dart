@@ -16,6 +16,7 @@ void main() async {
   MobileAds2.setTestDeviceIds(['9345804C1E5B8F0871DFE29CA0758842']);
 
   /// Run the app
+  /// kamal
   runApp(MyApp());
 }
 
