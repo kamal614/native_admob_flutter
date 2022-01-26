@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 import '../events.dart';
-import '../mobile_ads.dart';
+import '../mobile_ads2.dart';
 import '../utils.dart';
 
 /// An AppOpenAd model to communicate with the model in the platform side.

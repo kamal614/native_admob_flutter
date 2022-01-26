@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:native_admob_flutter/native_admob_flutter.dart';
 
-import 'mobile_ads.dart';
+import 'mobile_ads2.dart';
 
 /// Make sure the running platform is supported.
 /// The currently supported platforms are:

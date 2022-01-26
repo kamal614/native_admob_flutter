@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
 
-import '../mobile_ads.dart';
+import '../mobile_ads2.dart';
 import '../utils.dart';
 
 /// The events a [BannerAdController] can receive. Listen

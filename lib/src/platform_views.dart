@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-import 'mobile_ads.dart';
+import 'mobile_ads2.dart';
 
 const kDefaultAndroidViewDelay = Duration(milliseconds: 250);
 
