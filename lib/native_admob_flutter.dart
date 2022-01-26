@@ -1,5 +1,5 @@
 export 'src/events.dart';
-export 'src/mobile_ads2.dart';
+export 'src/mobile_ads.dart';
 export 'src/utils.dart'
     show
         AdError,

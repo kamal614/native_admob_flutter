@@ -4,7 +4,7 @@
 ///
 /// The Media Content can be an image or a video. If you're using test ads,
 /// video ads needs to be requested using the Native Video Test Ad Unit Id,
-/// which you can get by calling `MobileAds2.nativeAdVideoTestUnitId`
+/// which you can get by calling `MobileAds.nativeAdVideoTestUnitId`
 class MediaContent {
   /// Indicates whether the media content has video content (`true`) or not (`false`).
   final bool? hasVideoContent;

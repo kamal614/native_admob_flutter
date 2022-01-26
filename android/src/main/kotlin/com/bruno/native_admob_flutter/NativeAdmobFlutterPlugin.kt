@@ -15,7 +15,7 @@ import com.bruno.native_admob_flutter.rewarded_interstitial.RewardedInterstitial
 import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds2
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -46,7 +46,7 @@ class NativeAdmobFlutterPlugin : FlutterPlugin, ActivityAware, MethodCallHandler
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
             "initialize" -> {
-                MobileAds2.initialize(activity) { result.success(Build.VERSION.SDK_INT) }
+                MobileAds.initialize(activity) { result.success(Build.VERSION.SDK_INT) }
             }
             // Native Ads Controller
             "initNativeAdController" -> {
@@ -123,12 +123,12 @@ class NativeAdmobFlutterPlugin : FlutterPlugin, ActivityAware, MethodCallHandler
             // General Controller
             "isTestDevice" -> result.success(AdRequest.Builder().build().isTestDevice(activity))
             "setTestDeviceIds" -> {
-                val configuration = MobileAds2
+                val configuration = MobileAds
                         .getRequestConfiguration()
                         .toBuilder()
                         .setTestDeviceIds(call.argument<List<String>>("ids"))
                         .build()
-                MobileAds2.setRequestConfiguration(configuration)
+                MobileAds.setRequestConfiguration(configuration)
                 result.success(null)
             }
             "setChildDirected" -> {
@@ -137,12 +137,12 @@ class NativeAdmobFlutterPlugin : FlutterPlugin, ActivityAware, MethodCallHandler
                     false -> RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_FALSE
                     null -> RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_UNSPECIFIED
                 }
-                val configuration = MobileAds2
+                val configuration = MobileAds
                         .getRequestConfiguration()
                         .toBuilder()
                         .setTagForChildDirectedTreatment(child)
                         .build()
-                MobileAds2.setRequestConfiguration(configuration)
+                MobileAds.setRequestConfiguration(configuration)
                 result.success(null)
             }
             "setTagForUnderAgeOfConsent" -> {
@@ -151,12 +151,12 @@ class NativeAdmobFlutterPlugin : FlutterPlugin, ActivityAware, MethodCallHandler
                     false -> RequestConfiguration.TAG_FOR_UNDER_AGE_OF_CONSENT_FALSE
                     null -> RequestConfiguration.TAG_FOR_UNDER_AGE_OF_CONSENT_UNSPECIFIED
                 }
-                val configuration = MobileAds2
+                val configuration = MobileAds
                         .getRequestConfiguration()
                         .toBuilder()
                         .setTagForUnderAgeOfConsent(age)
                         .build()
-                MobileAds2.setRequestConfiguration(configuration)
+                MobileAds.setRequestConfiguration(configuration)
                 result.success(null)
             }
             "setMaxAdContentRating" -> {
@@ -167,22 +167,22 @@ class NativeAdmobFlutterPlugin : FlutterPlugin, ActivityAware, MethodCallHandler
                     3 -> RequestConfiguration.MAX_AD_CONTENT_RATING_MA
                     else -> RequestConfiguration.MAX_AD_CONTENT_RATING_G
                 }
-                val configuration = MobileAds2
+                val configuration = MobileAds
                         .getRequestConfiguration()
                         .toBuilder()
                         .setMaxAdContentRating(age)
                         .build()
-                MobileAds2.setRequestConfiguration(configuration)
+                MobileAds.setRequestConfiguration(configuration)
                 result.success(null)
             }
             "setAppVolume" -> {
                 val volume: Float = call.argument<Double>("volume")!!.toFloat()
-                MobileAds2.setAppVolume(volume)
+                MobileAds.setAppVolume(volume)
                 result.success(null)
             }
             "setAppMuted" -> {
                 val muted: Boolean = call.argument<Boolean>("muted")!!
-                MobileAds2.setAppMuted(muted)
+                MobileAds.setAppMuted(muted)
                 result.success(null)
             }
             else -> result.notImplemented()

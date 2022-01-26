@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-import 'mobile_ads2.dart';
+import 'mobile_ads.dart';
 
 const kDefaultAndroidViewDelay = Duration(milliseconds: 250);
 
@@ -17,7 +17,7 @@ class AndroidPlatformView extends StatefulWidget {
     this.onCreated,
     this.delayToShow,
   })  : this.useHybridComposition =
-            useHybridComposition ?? MobileAds2.useHybridComposition,
+            useHybridComposition ?? MobileAds.useHybridComposition,
         super(key: key);
 
   final PlatformViewCreatedCallback? onCreated;

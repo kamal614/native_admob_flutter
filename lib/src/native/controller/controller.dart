@@ -100,14 +100,14 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
   ///   - iOS: ca-app-pub-3940256099942544/3986624511
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
-  static String get testUnitId => MobileAds2.nativeAdTestUnitId;
+  static String get testUnitId => MobileAds.nativeAdTestUnitId;
 
   /// The video test id for this ad.
   ///   - Android: ca-app-pub-3940256099942544/1044960115
   ///   - iOS: ca-app-pub-3940256099942544/2521693316
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
-  static String get videoTestUnitId => MobileAds2.nativeAdVideoTestUnitId;
+  static String get videoTestUnitId => MobileAds.nativeAdVideoTestUnitId;
 
   MediaContent? _mediaContent;
 
@@ -260,7 +260,7 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
   /// Initialize the controller. This can be called only by the controller
   void init() {
     channel.setMethodCallHandler(_handleMessages);
-    MobileAds2.pluginChannel.invokeMethod('initNativeAdController', {'id': id});
+    MobileAds.pluginChannel.invokeMethod('initNativeAdController', {'id': id});
   }
 
   /// Dispose the controller to free up resources.
@@ -278,7 +278,7 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
   /// ```
   void dispose() {
     super.dispose();
-    MobileAds2.pluginChannel.invokeMethod('disposeNativeAdController', {
+    MobileAds.pluginChannel.invokeMethod('disposeNativeAdController', {
       'id': id,
     });
     _onVideoEvent.close();
@@ -372,7 +372,7 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Using-the-controller-and-listening-to-native-events#reloading-the-ad)
   Future<bool> load({
-    /// The ad unit id. If null, uses [MobileAds2.nativeAdUnitId]
+    /// The ad unit id. If null, uses [MobileAds.nativeAdUnitId]
     String? unitId,
     NativeAdOptions? options,
 
@@ -389,9 +389,9 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
     List<String> keywords = const [],
   }) async {
     ensureAdNotDisposed();
-    assertMobileAds2IsInitialized();
+    assertMobileAdsIsInitialized();
     if (!debugCheckAdWillReload(isLoaded, force)) return false;
-    unitId ??= MobileAds2.nativeAdUnitId ?? MobileAds2.nativeAdTestUnitId;
+    unitId ??= MobileAds.nativeAdUnitId ?? MobileAds.nativeAdTestUnitId;
     isLoaded = (await channel.invokeMethod<bool>('loadAd', {
       'unitId': unitId,
       'options': (options ?? NativeAdOptions()).toJson(),

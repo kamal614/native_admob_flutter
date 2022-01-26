@@ -151,7 +151,7 @@ class BannerAd extends StatefulWidget {
   /// The unitId used by this `BannerAd`.
   /// If changed after loaded the ad will NOT be reloaded with the new ad unit id.\
   ///
-  /// If `null`, defaults to `MobileAds2.bannerAdUnitId`
+  /// If `null`, defaults to `MobileAds.bannerAdUnitId`
   final String? unitId;
 
   /// The options this ad will follow.
@@ -176,7 +176,7 @@ class BannerAd extends StatefulWidget {
 
   /// Use hybrid composition in this ad. This has effect only on Android
   ///
-  /// If null, defaults to `MobileAds2.useHybridComposition`
+  /// If null, defaults to `MobileAds.useHybridComposition`
   final bool? useHybridComposition;
 
   @override
@@ -269,7 +269,7 @@ class _BannerAdState extends State<BannerAd>
         final params = <String, dynamic>{};
         params.addAll({
           'controllerId': controller.id,
-          'unitId': widget.unitId ?? MobileAds2.bannerAdUnitId,
+          'unitId': widget.unitId ?? MobileAds.bannerAdUnitId,
           'size_height': height,
           'size_width': width,
           'nonPersonalizedAds': widget.nonPersonalizedAds,

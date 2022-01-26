@@ -1,4 +1,4 @@
-import GoogleMobileAds2
+import GoogleMobileAds
 
 public enum RequestFactory {
     public static func createAdRequest(nonPersonalizedAds: Bool, keywords: [String]? = nil) -> GADRequest {

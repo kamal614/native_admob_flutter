@@ -16,9 +16,9 @@ const int RATING_MA = 3;
 ///   - using the right system version;
 ///   - using test devices and test ids;
 ///   - targeting the right groups of people.
-class MobileAds2 {
-  // MobileAds2 can not be initialized
-  const MobileAds2._();
+class MobileAds {
+  // MobileAds can not be initialized
+  const MobileAds._();
 
   // Unit ids
   static String? nativeAdUnitId;
@@ -60,11 +60,11 @@ class MobileAds2 {
   static bool _initialized = false;
 
   /// Check if the SDK is initialized. To initialize it, use
-  /// `MobileAds2.initialize()`
+  /// `MobileAds.initialize()`
   static bool get isInitialized => _initialized;
 
   /// Check if hybrid composition is enabled on android. It's enabled by default if
-  /// the android version is 19 and on iOS. Do NOT set it before `MobileAds2.initialize()`.
+  /// the android version is 19 and on iOS. Do NOT set it before `MobileAds.initialize()`.
   /// Note that on Android versions prior to Android 10 Hybrid Composition has some
   /// [performance drawbacks](https://flutter.dev/docs/development/platform-integration/platform-views?tab=android-platform-views-kotlin-tab#performance).
   ///
@@ -72,7 +72,7 @@ class MobileAds2 {
   ///
   /// Basic usage:
   /// ```dart
-  /// MobileAds2.initialize(
+  /// MobileAds.initialize(
   ///   useHybridComposition: true,
   /// )
   /// ```
@@ -94,7 +94,7 @@ class MobileAds2 {
   ///
   /// ```dart
   /// void main() async {
-  ///   MobileAds2.initialize();
+  ///   MobileAds.initialize();
   ///   runApp(MyApp());
   /// }
   /// ```
@@ -116,36 +116,36 @@ class MobileAds2 {
     assert(
       !isInitialized,
       '''The mobile ads sdk is already initialized. It can be initialized only once
-      Check if it's initialized before trying to initialize it using `MobileAds2.isInitialized`
+      Check if it's initialized before trying to initialize it using `MobileAds.isInitialized`
       For more info on initialization, visit https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#initialize-the-mobile-ads-sdk''',
     );
 
     // Ad Ids
-    MobileAds2.nativeAdUnitId ??= nativeAdUnitId ?? nativeAdTestUnitId;
-    _debugCheckIsTestId(MobileAds2.nativeAdUnitId, [
+    MobileAds.nativeAdUnitId ??= nativeAdUnitId ?? nativeAdTestUnitId;
+    _debugCheckIsTestId(MobileAds.nativeAdUnitId, [
       nativeAdTestUnitId,
       nativeAdVideoTestUnitId,
     ]);
 
-    MobileAds2.bannerAdUnitId ??= bannerAdUnitId ?? bannerAdTestUnitId;
-    _debugCheckIsTestId(MobileAds2.bannerAdUnitId, [bannerAdTestUnitId]);
+    MobileAds.bannerAdUnitId ??= bannerAdUnitId ?? bannerAdTestUnitId;
+    _debugCheckIsTestId(MobileAds.bannerAdUnitId, [bannerAdTestUnitId]);
 
-    MobileAds2.interstitialAdUnitId ??=
+    MobileAds.interstitialAdUnitId ??=
         interstitialAdUnitId ?? interstitialAdTestUnitId;
-    _debugCheckIsTestId(MobileAds2.interstitialAdUnitId, [
+    _debugCheckIsTestId(MobileAds.interstitialAdUnitId, [
       interstitialAdTestUnitId,
       interstitialAdVideoTestUnitId,
     ]);
 
-    MobileAds2.rewardedAdUnitId ??= rewardedAdUnitId ?? rewardedAdTestUnitId;
-    _debugCheckIsTestId(MobileAds2.rewardedAdUnitId, [rewardedAdTestUnitId]);
+    MobileAds.rewardedAdUnitId ??= rewardedAdUnitId ?? rewardedAdTestUnitId;
+    _debugCheckIsTestId(MobileAds.rewardedAdUnitId, [rewardedAdTestUnitId]);
 
-    MobileAds2.appOpenAdUnitId ??= appOpenAdUnitId ?? appOpenAdTestUnitId;
-    _debugCheckIsTestId(MobileAds2.appOpenAdUnitId, [appOpenAdTestUnitId]);
+    MobileAds.appOpenAdUnitId ??= appOpenAdUnitId ?? appOpenAdTestUnitId;
+    _debugCheckIsTestId(MobileAds.appOpenAdUnitId, [appOpenAdTestUnitId]);
 
-    MobileAds2.rewardedInterstitialAdUnitId =
+    MobileAds.rewardedInterstitialAdUnitId =
         rewardedInterstitialAdUnitId ?? rewardedInterstitialAdTestUnitId;
-    _debugCheckIsTestId(MobileAds2.rewardedInterstitialAdUnitId, [
+    _debugCheckIsTestId(MobileAds.rewardedInterstitialAdUnitId, [
       rewardedInterstitialAdTestUnitId,
     ]);
 
@@ -154,10 +154,10 @@ class MobileAds2 {
     assertVersionIsSupported(false);
     if (Platform.isAndroid) {
       // hybrid composition is enabled in android 19 and can't be disabled
-      MobileAds2.useHybridComposition =
+      MobileAds.useHybridComposition =
           osVersion == 19 ? true : useHybridComposition ?? false;
 
-      if (osVersion >= 29 && MobileAds2.useHybridComposition) {
+      if (osVersion >= 29 && MobileAds.useHybridComposition) {
         print(
           'It is NOT recommended to use hybrid composition on Android 10 or greater. '
           'It has some performance drawbacks',
@@ -269,7 +269,7 @@ class MobileAds2 {
   ///
   /// Basic usage:
   /// ```dart
-  /// MobileAds2.setMaxAdContentRating(RATING_MA);
+  /// MobileAds.setMaxAdContentRating(RATING_MA);
   /// ```
   static Future<void> setMaxAdContentRating(int maxRating) async {
     assert(
@@ -293,9 +293,9 @@ class MobileAds2 {
   /// report the relative app volume to the SDK:
   ///
   /// ```dart
-  /// MobileAds2.initialize();
+  /// MobileAds.initialize();
   /// // Set app volume to be half of current device volume.
-  /// MobileAds2.setAppVolume(0.5);
+  /// MobileAds.setAppVolume(0.5);
   /// ```
   static Future<void> setAppVolume(double volume) {
     assert(

@@ -3,7 +3,7 @@ import 'package:native_admob_flutter/native_admob_flutter.dart';
 
 final interstitialAd = InterstitialAd();
 final interstitialVideoAd = InterstitialAd()
-  ..load(unitId: MobileAds2.interstitialAdVideoTestUnitId);
+  ..load(unitId: MobileAds.interstitialAdVideoTestUnitId);
 
 final rewardedAd = RewardedAd()..load();
 
@@ -50,7 +50,7 @@ class _FullScreenAdsState extends State<FullScreenAds> {
       onRefresh: () async {
         await interstitialAd.load();
         await interstitialVideoAd.load(
-            unitId: MobileAds2.interstitialAdVideoTestUnitId);
+            unitId: MobileAds.interstitialAdVideoTestUnitId);
         await rewardedAd.load(force: true);
         await appOpenAd.load(force: true);
       },
@@ -75,19 +75,19 @@ class _FullScreenAdsState extends State<FullScreenAds> {
           TextButton(
             child: Text('Show interstitial video ad'),
             onLongPress: () => interstitialVideoAd.load(
-              unitId: MobileAds2.interstitialAdVideoTestUnitId,
+              unitId: MobileAds.interstitialAdVideoTestUnitId,
               force: true,
             ),
             onPressed: () async {
               // Load only if not loaded
               if (!interstitialVideoAd.isAvailable)
                 await interstitialVideoAd.load(
-                  unitId: MobileAds2.interstitialAdVideoTestUnitId,
+                  unitId: MobileAds.interstitialAdVideoTestUnitId,
                 );
               if (interstitialVideoAd.isAvailable) {
                 await interstitialVideoAd.show();
                 interstitialVideoAd.load(
-                  unitId: MobileAds2.interstitialAdVideoTestUnitId,
+                  unitId: MobileAds.interstitialAdVideoTestUnitId,
                 );
               }
             },

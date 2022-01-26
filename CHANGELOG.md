@@ -39,7 +39,7 @@ Date format: DD/MM/YYYY
 
 ## [1.2.3] - [22/04/2021]
 
-- **FIX** **NULL-SAFETY** `MobileAds2.isTestDevice` now can't return null
+- **FIX** **NULL-SAFETY** `MobileAds.isTestDevice` now can't return null
 - **FIX** The Banner `AdView`'s is now not disposed when `BannerAdView` is removed from the view. It's not disposed when the controller is disposed.
 
 ## [1.2.2] - [22/04/2021]
@@ -73,12 +73,12 @@ Date format: DD/MM/YYYY
 
 ## [1.0.1] - [08/03/2021]
 
-- **FIX** `MobileAds2.requestTrackingAuthorization` (Fixes [#23](https://github.com/bdlukaa/native_admob_flutter/issues/23))
+- **FIX** `MobileAds.requestTrackingAuthorization` (Fixes [#23](https://github.com/bdlukaa/native_admob_flutter/issues/23))
 - **FIX** Full-screen ad loading
 
 ## [1.0.0] - [07/03/2021]
 
-- **NEW** `MobileAds2.requestTrackingAuthorization` (Fixes [#3](https://github.com/bdlukaa/native_admob_flutter/issues/3))
+- **NEW** `MobileAds.requestTrackingAuthorization` (Fixes [#3](https://github.com/bdlukaa/native_admob_flutter/issues/3))
 - **FIX** Check if the ad is not loaded before throwing the timeout error (Fixes [#19](https://github.com/bdlukaa/native_admob_flutter/issues/19))
 - **FIX** Removed line that ensured the running platform was Android (Fixes [#20](https://github.com/bdlukaa/native_admob_flutter/issues/20))
 - Increased the load timeout to 1 minute
@@ -189,10 +189,10 @@ Date format: DD/MM/YYYY
 - Make sure to check if the native ad is not disposed instead of attached
 - [profile mode](https://flutter.dev/docs/testing/build-modes#profile) is now considered as test mode
 - Avoid `RewardedAd`s from receiving events if disposed
-- Ensure the SDK is initialized before using it (`MobileAds2.initialize`)
+- Ensure the SDK is initialized before using it (`MobileAds.initialize`)
 - New `AttachableMixin`
 - Disattach the controller on dispose
-- `MobileAds2`
+- `MobileAds`
   - Make constructor private
   - Add android version checking on initialize (min version is 16)
   - Fixed `setAppMuted` error
@@ -269,11 +269,11 @@ Date format: DD/MM/YYYY
   - Implementation for [AppOpenAd](https://developers.google.com/admob/android/app-open-ads)s
   - [Wiki page for AppOpenAds](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-an-app-open-ad)
   - New mixin [UniqueKeyMixin] to implement a unique id to classes
-  - `MobileAds2.isTestDevice` method
+  - `MobileAds.isTestDevice` method
     <!-- This has been done to improve performance. -->
     <!-- Previously, each Ad (Banner, Interstitial...) had to create its own -->
     <!-- Channel instance. That would cause a lot of unnecessary use of resources -->
-  - The plugin channel is now public accessible in `MobileAds2.pluginChannel`
+  - The plugin channel is now public accessible in `MobileAds.pluginChannel`
 - **Fixed**: showing warning when a production ad was used in testing (debug)
 - Improved documentation on `AdError`s to support `AppOpenAd`s error codes
 - Removed the native video ad gif <!-- The gif was too big -->
@@ -295,7 +295,7 @@ Date format: DD/MM/YYYY
 ## 0.4.0 - [23/01/2021]
 
 - **NEW**:
-  - `rewardedAdUnitId` in `MobileAds2.initialize()` is now possible
+  - `rewardedAdUnitId` in `MobileAds.initialize()` is now possible
   - Implementation for `Native and Interstitial Video Ad Ids`
 - **FIXED**:
   - Rating bar sizes
@@ -359,7 +359,7 @@ Date format: DD/MM/YYYY
 - **NEW**: BannerAds
 - **BREAKING**:
   - Rename `AdEvent` to `NativeAdEvent`
-  - Rename `NativeAds` to `MobileAds2`
+  - Rename `NativeAds` to `MobileAds`
 - Size is only applied to the ad, not the builder
 
 ## 0.0.8+1 - [11/01/2021]

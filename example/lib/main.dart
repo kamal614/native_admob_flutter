@@ -9,11 +9,11 @@ void main() async {
   /// Make sure you add this line here, so the plugin can access the native side
   WidgetsFlutterBinding.ensureInitialized();
 
-  /// Make sure to initialize the MobileAds2 sdk. It returns a future
+  /// Make sure to initialize the MobileAds sdk. It returns a future
   /// that will be completed as soon as it initializes
-  await MobileAds2.initialize();
+  await MobileAds.initialize();
   // This is my device id. Ad yours here
-  MobileAds2.setTestDeviceIds(['9345804C1E5B8F0871DFE29CA0758842']);
+  MobileAds.setTestDeviceIds(['9345804C1E5B8F0871DFE29CA0758842']);
 
   /// Run the app
   runApp(MyApp());

@@ -18,14 +18,14 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   ///   - iOS: ca-app-pub-3940256099942544/4411468910
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
-  static String get testUnitId => MobileAds2.interstitialAdTestUnitId;
+  static String get testUnitId => MobileAds.interstitialAdTestUnitId;
 
   /// The video test id for this ad.
   ///   - Android: ca-app-pub-3940256099942544/8691691433
   ///   - iOS: ca-app-pub-3940256099942544/5135589807
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
-  static String get videoTestUnitId => MobileAds2.interstitialAdVideoTestUnitId;
+  static String get videoTestUnitId => MobileAds.interstitialAdVideoTestUnitId;
 
   /// Listen to the events the ad throws
   ///
@@ -79,7 +79,7 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   /// Initialize the controller. This can be called only by the controller
   void init() {
     channel.setMethodCallHandler(_handleMessages);
-    MobileAds2.pluginChannel.invokeMethod('initInterstitialAd', {'id': id});
+    MobileAds.pluginChannel.invokeMethod('initInterstitialAd', {'id': id});
   }
 
   /// Dispose the ad to free up resources.
@@ -95,7 +95,7 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   /// ```
   void dispose() {
     super.dispose();
-    MobileAds2.pluginChannel.invokeMethod('disposeInterstitialAd', {'id': id});
+    MobileAds.pluginChannel.invokeMethod('disposeInterstitialAd', {'id': id});
   }
 
   /// Handle the messages the channel sends
@@ -139,8 +139,8 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   ///
   /// For more info, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-an-interstitial-ad#load-the-ad)
   ///
-  /// If `unitId` is null, `MobileAds2.interstitialAdUnitId` or
-  /// `MobileAds2.interstitialAdTestUnitId` is used
+  /// If `unitId` is null, `MobileAds.interstitialAdUnitId` or
+  /// `MobileAds.interstitialAdTestUnitId` is used
   ///
   /// For more info, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-an-interstitial-ad#load-the-ad)
   Future<bool> load({
@@ -157,13 +157,13 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
     List<String> keywords = const [],
   }) async {
     ensureAdNotDisposed();
-    assertMobileAds2IsInitialized();
+    assertMobileAdsIsInitialized();
     if (!debugCheckAdWillReload(isAvailable, force)) return false;
     isLoaded = (await channel.invokeMethod<bool>('loadAd', {
       'unitId': unitId ??
           this.unitId ??
-          MobileAds2.interstitialAdUnitId ??
-          MobileAds2.interstitialAdTestUnitId,
+          MobileAds.interstitialAdUnitId ??
+          MobileAds.interstitialAdTestUnitId,
       'nonPersonalizedAds': nonPersonalizedAds ?? this.nonPersonalizedAds,
       'keywords': keywords,
     }).timeout(
@@ -189,7 +189,7 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   /// For more info, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-an-interstitial-ad#show-the-ad)
   Future<bool> show() async {
     ensureAdNotDisposed();
-    assertMobileAds2IsInitialized();
+    assertMobileAdsIsInitialized();
     ensureAdAvailable();
     return (await channel.invokeMethod<bool>('show'))!;
   }
