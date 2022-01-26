@@ -1,7 +1,7 @@
 import AdSupport
 import AppTrackingTransparency
 import Flutter
-import GoogleMobileAds
+import GoogleMobileAds2
 import UIKit
 
 public class NativeAdmobFlutterPlugin: NSObject, FlutterPlugin {
@@ -24,7 +24,7 @@ public class NativeAdmobFlutterPlugin: NSObject, FlutterPlugin {
         let params = call.arguments as? [String: Any]
         switch call.method {
         case "initialize":
-            GADMobileAds.sharedInstance().start { (status: GADInitializationStatus) in
+            GADMobileAds2.sharedInstance().start { (status: GADInitializationStatus) in
                 print("iOS Admob status: \(status.adapterStatusesByClassName)")
             }
             result(ProcessInfo().operatingSystemVersion.majorVersion)
@@ -84,21 +84,21 @@ public class NativeAdmobFlutterPlugin: NSObject, FlutterPlugin {
             result(false)
 
         case "setTestDeviceIds":
-            GADMobileAds
+            GADMobileAds2
                 .sharedInstance()
                 .requestConfiguration
                 .testDeviceIdentifiers = (params?["ids"] as! [String])
             result(nil)
 
         case "setChildDirected":
-            GADMobileAds
+            GADMobileAds2
                 .sharedInstance()
                 .requestConfiguration
                 .tag(forChildDirectedTreatment: params?["directed"] as! Bool)
             result(nil)
 
         case "setTagForUnderAgeOfConsent":
-            GADMobileAds
+            GADMobileAds2
                 .sharedInstance()
                 .requestConfiguration
                 .tagForUnderAge(ofConsent: params?["under"] as! Bool)
@@ -118,17 +118,17 @@ public class NativeAdmobFlutterPlugin: NSObject, FlutterPlugin {
             default:
                 maxAdContentRating = GADMaxAdContentRating.general
             }
-            GADMobileAds
+            GADMobileAds2
                 .sharedInstance()
                 .requestConfiguration.maxAdContentRating = maxAdContentRating
             result(nil)
 
         case "setAppVolume":
-            GADMobileAds.sharedInstance().applicationVolume = (params?["volume"] as! NSNumber).floatValue
+            GADMobileAds2.sharedInstance().applicationVolume = (params?["volume"] as! NSNumber).floatValue
             result(nil)
 
         case "setAppMuted":
-            GADMobileAds.sharedInstance().applicationMuted = params?["muted"] as! Bool
+            GADMobileAds2.sharedInstance().applicationMuted = params?["muted"] as! Bool
             result(nil)
 
         case "requestTrackingAuthorization":

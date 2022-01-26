@@ -17,7 +17,7 @@ class AndroidPlatformView extends StatefulWidget {
     this.onCreated,
     this.delayToShow,
   })  : this.useHybridComposition =
-            useHybridComposition ?? MobileAds.useHybridComposition,
+            useHybridComposition ?? MobileAds2.useHybridComposition,
         super(key: key);
 
   final PlatformViewCreatedCallback? onCreated;

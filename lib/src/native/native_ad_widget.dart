@@ -64,7 +64,7 @@ class NativeAd extends StatefulWidget {
 
   /// The unit id used by this `NativeAd`
   /// The ad won't be reloaded if this changes.
-  /// If `null`, defaults to `MobileAds.nativeAdUnitId`
+  /// If `null`, defaults to `MobileAds2.nativeAdUnitId`
   final String? unitId;
 
   /// The widget used in case of an error shows up
@@ -138,7 +138,7 @@ class NativeAd extends StatefulWidget {
 
   /// Use hybrid composition in this ad. This has effect only on Android
   ///
-  /// If null, defaults to [MobileAds.useHybridComposition]
+  /// If null, defaults to [MobileAds2.useHybridComposition]
   final bool? useHybridComposition;
 
   /// {@template ads.keywords}

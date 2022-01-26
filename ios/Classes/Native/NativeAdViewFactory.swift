@@ -1,5 +1,5 @@
 import Flutter
-import GoogleMobileAds
+import GoogleMobileAds2
 
 class NativeAdViewFactory: NSObject, FlutterPlatformViewFactory {
     let messenger: FlutterBinaryMessenger

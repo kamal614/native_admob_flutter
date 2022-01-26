@@ -124,7 +124,7 @@ class BannerAdController extends LoadShowAd<BannerAdEvent>
   ///   - iOS: ca-app-pub-3940256099942544/2934735716
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
-  static String get testUnitId => MobileAds.bannerAdTestUnitId;
+  static String get testUnitId => MobileAds2.bannerAdTestUnitId;
 
   /// Listen to the events the controller throws
   ///
@@ -167,7 +167,7 @@ class BannerAdController extends LoadShowAd<BannerAdEvent>
   /// Initialize the controller. This can be called only by the controller
   void init() {
     channel.setMethodCallHandler(_handleMessages);
-    MobileAds.pluginChannel.invokeMethod('initBannerAdController', {'id': id});
+    MobileAds2.pluginChannel.invokeMethod('initBannerAdController', {'id': id});
   }
 
   /// Dispose the controller to free up resources.
@@ -183,7 +183,7 @@ class BannerAdController extends LoadShowAd<BannerAdEvent>
   /// ```
   void dispose() {
     super.dispose();
-    MobileAds.pluginChannel.invokeMethod('disposeBannerAdController', {
+    MobileAds2.pluginChannel.invokeMethod('disposeBannerAdController', {
       'id': id,
     });
     attach(false);
@@ -225,7 +225,7 @@ class BannerAdController extends LoadShowAd<BannerAdEvent>
     Duration? timeout,
   }) async {
     ensureAdNotDisposed();
-    assertMobileAdsIsInitialized();
+    assertMobileAds2IsInitialized();
     if (!debugCheckAdWillReload(isLoaded, force)) return false;
     isLoaded = (await channel.invokeMethod<bool>('loadAd').timeout(
       timeout ?? this.loadTimeout,

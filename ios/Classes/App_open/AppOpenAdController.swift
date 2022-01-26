@@ -1,5 +1,5 @@
 import Flutter
-import GoogleMobileAds
+import GoogleMobileAds2
 
 class AppOpenAdController: NSObject, GADFullScreenContentDelegate {
     var appOpenAd: GADAppOpenAd!

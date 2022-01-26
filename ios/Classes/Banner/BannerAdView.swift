@@ -1,5 +1,5 @@
 import Flutter
-import GoogleMobileAds
+import GoogleMobileAds2
 
 class BannerAdView: NSObject, FlutterPlatformView {
     var data: [String: Any]?

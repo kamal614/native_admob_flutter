@@ -1,5 +1,5 @@
 import Flutter
-import GoogleMobileAds
+import GoogleMobileAds2
 
 class NativeAdControllerManager {
     static let shared = NativeAdControllerManager()
